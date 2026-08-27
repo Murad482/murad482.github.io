@@ -1,278 +1,1393 @@
+```html
 <!DOCTYPE html>
 <html lang="az">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LWEB5RGMLF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LWEB5RGMLF');
-</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LWEB5RGMLF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LWEB5RGMLF');
+  </script>
+
   <title>Murad | Cyber Security Specialist</title>
 
-  <meta name="description" content="Murad Shikhaliyev - Cyber Security Specialist, Ethical Hacker, Network Defender.">
-  <meta name="keywords" content="Cyber Security, Ethical Hacking, Network, Fortinet, Firewall, Murad, InfoSec, Python">
+  <meta name="description"
+        content="Murad Shikhaliyev - Cyber Security Specialist, Ethical Hacker, Network Defender and System Administrator.">
+
+  <meta name="keywords"
+        content="Cyber Security, Ethical Hacking, Network Security, Fortinet, Cisco, Firewall, Linux, Windows Server, Python, SIEM">
+
   <meta name="author" content="Murad Shikhaliyev">
 
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      background: #000;
-      color: #e0e0e0;
-      font-family: 'Courier New', monospace;
+      background: #020617;
+      color: #e5e7eb;
+      font-family: "Courier New", monospace;
       overflow-x: hidden;
     }
 
-    /* MATRIX YAĞIŞ EFFEKTİ */
-    canvas {
+    /* =========================
+       MATRIX BACKGROUND
+    ========================= */
+
+    #matrix {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
-      background: radial-gradient(circle at 50% 30%, #010409, #000);
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -5;
+      opacity: 0.25;
     }
 
-    .neon {
-      text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -4;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          circle at 50% 20%,
+          rgba(0,255,255,0.08),
+          transparent 40%
+        ),
+        linear-gradient(
+          rgba(0,0,0,0.2),
+          rgba(0,0,0,0.75)
+        );
     }
 
-    .btn {
-      background: linear-gradient(90deg, #00ffff, #ff0055);
-      padding: 10px 25px;
-      border-radius: 8px;
-      color: #fff;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00ffff;
+    /* =========================
+       SCANLINES
+    ========================= */
+
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      pointer-events: none;
+      opacity: 0.05;
+
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        #00ffff 4px
+      );
     }
 
-    /* Orijinal FADE-IN (Header/Footer üçün) */
-    .fade-in {
-      animation: fadeIn 2s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
+    /* =========================
+       NAVBAR
+    ========================= */
 
-    /* YENİ: Skroll Animasiyası (Intersection Observer üçün) */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1s ease-out;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* YENİ: Glitch Effekti */
-    .glitch {
-      position: relative;
-      transition: 0.2s;
-    }
-    .glitch:hover {
-      text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 
-                   -2px 2px 2px #ff0055, /* Qırmızı kölgə */
-                   2px -2px 2px #00ffff; /* Mavi kölgə */
-      animation: glitch-anim 0.3s infinite linear alternate-reverse;
-    }
-    @keyframes glitch-anim {
-      0% { transform: translate(0); }
-      20% { transform: translate(-3px, 3px); }
-      40% { transform: translate(-3px, -3px); }
-      60% { transform: translate(3px, 3px); }
-      80% { transform: translate(3px, -3px); }
-      100% { transform: translate(0); }
-    }
-
-    /* Yazı animasiyası */
-    .typing {
-      border-right: 2px solid #00ffff;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      animation: typing 4s steps(20, end) forwards, blink 0.8s infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-
-    /* Kart effektləri */
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(0, 255, 255, 0.2);
-      border-radius: 12px;
-      padding: 20px;
-      backdrop-filter: blur(8px);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
-    }
-
-    /* Navbar */
     nav {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
-      color: #00ffff;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 12px 0;
-      z-index: 10;
+      z-index: 50;
+
+      background: rgba(2, 6, 23, 0.82);
+      backdrop-filter: blur(15px);
+
+      border-bottom: 1px solid rgba(0,255,255,0.18);
+      box-shadow: 0 0 30px rgba(0,255,255,0.04);
     }
 
-    nav a {
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 14px 20px;
+    }
+
+    .logo {
       color: #00ffff;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: #94a3b8;
+      text-decoration: none;
       transition: 0.3s;
     }
 
-    nav a:hover {
-      color: #fff;
+    .nav-links a:hover {
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff;
     }
-  </style>
-</head>
-<body class="flex flex-col items-center justify-center min-h-screen text-center px-4">
 
-  <canvas id="matrix"></canvas>
+    @media(max-width:700px) {
+      .nav-links {
+        gap: 10px;
+        font-size: 12px;
+      }
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+      .logo {
+        display: none;
+      }
 
-  <header class="mt-24 fade-in">
-    <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold neon mb-4 glitch">Murad Shikhaliyev</h1>
-    <p class="typing text-lg sm:text-xl md:text-2xl text-cyan-400">
-      Cyber Security | Ethical Hacker | Network Defender
-    </p>
-  </header>
-
-  <section id="about" class="mt-20 max-w-3xl card reveal">
-    <h2 class="text-3xl mb-4 neon">About me</h2>
-    <p>
-      System Administrator and Network Security Specialist.<br>
-      Works in Ethical Hacking, Firewall Configuration, Vulnerability Analysis, Hardware Security, and Penetration Testing.<br>
-      The goal is to protect systems and identify risks.
-    </p>
-  </section>
-
-  <section id="skills" class="mt-16 max-w-3xl card reveal">
-    <h2 class="text-3xl mb-4 neon">Skills</h2>
-    <div class="grid md:grid-cols-2 gap-4 text-left">
-      <p>🔐 Network Security (Fortinet, Cisco, HP)</p>
-      <p>💻 Linux & Windows Server Administration</p>
-      <p>🧠 Penetration Testing & Ethical Hacking</p>
-      <p>⚙️ Python and Bash scripting</p>
-      <p>🧩 SIEM and Firewall idarəetməsi</p>
-      <p>📡 Wi-Fi and Packet Analiz</p>
-    </div>
-  </section>
-
-  <section id="projects" class="mt-16 max-w-3xl card reveal">
-    <h2 class="text-3xl mb-4 neon">Projects</h2>
-    <ul class="space-y-2">
-      <li>🕵️‍♂️ Vulnerability Scanner (Python)</li>
-      <li>🧱 FortiGate , PaloAlto Firewall Automation Script</li>
-      <li>🌐 Secure Network Infrastructure Design</li>
-    </ul>
-  </section>
-
-  <section id="contact" class="mt-16 mb-12 max-w-3xl card reveal">
-    <h2 class="text-3xl mb-4 neon">Əlaqə</h2>
-    <p>📧 Email: <a href="mailto:murad.shikhaliyev655@gmail.com" class="text-cyan-400 hover:underline">murad.shikhaliyev655@gmail.com</a></p>
-    <p>💻 GitHub: <a href="https://github.com/murad482" class="text-cyan-400 hover:underline">github.com/murad482</a></p>
-    <p>📞 Call: <a href="tel:+994504440473" class="text-cyan-400 hover:underline">+994504440473</a></p>
-  </section>
-
-  <footer class="mt-auto mb-6 text-sm text-gray-500 fade-in">© 2025 Murad Shikhaliyev | All Rights Reserved</footer>
-
-  <script>
-    // MATRIX FON ANİMASİYASI
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*()*&^%";
-    const font_size = 16;
-    const columns = canvas.width / font_size;
-
-    const drops = [];
-    for (let x = 0; x < columns; x++) drops[x] = 1;
-
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#00ffff";
-      ctx.font = font_size + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = chars.charAt(Math.floor(Math.random() * chars.length));
-        ctx.fillText(text, i * font_size, drops[i] * font_size);
-
-        if (drops[i] * font_size > canvas.height && Math.random() > 0.975)
-          drops[i] = 0;
-        drops[i]++;
+      .nav-inner {
+        justify-content: center;
       }
     }
 
-    function animate() {
-      draw();
-      requestAnimationFrame(animate);
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      padding: 100px 20px 50px;
+      text-align: center;
     }
 
-    animate(); // Matrix animasiyasını başladın
+    .terminal-status {
+      display: inline-block;
 
-    window.addEventListener('resize', () => {
-      canvas.height = window.innerHeight;
-      canvas.width = window.innerWidth;
-      // Qeyd: burada 'columns' və 'drops' array-ni yenidən hesablamaq daha yaxşı olar
-    });
+      padding: 8px 18px;
+      margin-bottom: 25px;
 
-    // YENİ: Intersection Observer (Skroll Animasiyası)
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        } else {
-          // İstəsəniz, görünüşdən çıxanda animasiyanı sıfırlaya bilərsiniz
-          // entry.target.classList.remove('active');
+      border: 1px solid rgba(0,255,255,0.4);
+      border-radius: 20px;
+
+      color: #00ffff;
+      background: rgba(0,255,255,0.04);
+
+      box-shadow:
+        0 0 15px rgba(0,255,255,0.08);
+
+      font-size: 13px;
+    }
+
+    .status-dot {
+      display: inline-block;
+
+      width: 8px;
+      height: 8px;
+
+      background: #22c55e;
+      border-radius: 50%;
+
+      margin-right: 8px;
+
+      box-shadow: 0 0 10px #22c55e;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 82px);
+      margin: 0;
+
+      color: white;
+
+      text-shadow:
+        0 0 10px #00ffff,
+        0 0 30px rgba(0,255,255,0.6);
+    }
+
+    .hero h1 span {
+      color: #00ffff;
+    }
+
+    .subtitle {
+      margin-top: 20px;
+
+      color: #67e8f9;
+      font-size: clamp(15px, 3vw, 24px);
+
+      min-height: 32px;
+    }
+
+    .cursor {
+      color: #00ffff;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .hero-buttons {
+      margin-top: 35px;
+
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 12px 25px;
+
+      border-radius: 8px;
+
+      text-decoration: none;
+
+      font-weight: bold;
+
+      transition: 0.3s;
+
+      border: 1px solid #00ffff;
+    }
+
+    .btn-primary {
+      background: linear-gradient(
+        90deg,
+        #00ffff,
+        #008cff
+      );
+
+      color: #020617;
+
+      box-shadow:
+        0 0 20px rgba(0,255,255,0.25);
+    }
+
+    .btn-secondary {
+      color: #00ffff;
+      background: rgba(0,255,255,0.03);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 0 25px rgba(0,255,255,0.4);
+    }
+
+    /* =========================
+       TERMINAL
+    ========================= */
+
+    .terminal {
+      width: min(700px, 95%);
+
+      margin-top: 55px;
+
+      background: rgba(2,6,23,0.85);
+
+      border: 1px solid rgba(0,255,255,0.25);
+
+      border-radius: 10px;
+
+      overflow: hidden;
+
+      text-align: left;
+
+      box-shadow:
+        0 0 40px rgba(0,255,255,0.08);
+    }
+
+    .terminal-header {
+      padding: 10px 15px;
+
+      background: rgba(255,255,255,0.04);
+
+      border-bottom: 1px solid rgba(0,255,255,0.15);
+
+      color: #64748b;
+
+      font-size: 13px;
+    }
+
+    .terminal-body {
+      padding: 18px;
+
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .green {
+      color: #22c55e;
+    }
+
+    .cyan {
+      color: #00ffff;
+    }
+
+    .pink {
+      color: #ff0055;
+    }
+
+    /* =========================
+       CONTENT
+    ========================= */
+
+    main {
+      width: min(1050px, 92%);
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 100px;
+      scroll-margin-top: 90px;
+    }
+
+    .section-title {
+      font-size: 32px;
+
+      color: #00ffff;
+
+      text-shadow:
+        0 0 10px #00ffff;
+
+      margin-bottom: 30px;
+
+      text-align: center;
+    }
+
+    /* =========================
+       CARDS
+    ========================= */
+
+    .card {
+      background: rgba(255,255,255,0.035);
+
+      border: 1px solid rgba(0,255,255,0.15);
+
+      border-radius: 15px;
+
+      padding: 30px;
+
+      backdrop-filter: blur(12px);
+
+      transition: 0.35s;
+
+      box-shadow:
+        inset 0 0 30px rgba(0,255,255,0.015);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+
+      border-color: rgba(0,255,255,0.5);
+
+      box-shadow:
+        0 0 35px rgba(0,255,255,0.12);
+    }
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 25px;
+    }
+
+    @media(max-width:750px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skill {
+      margin-bottom: 22px;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+
+      margin-bottom: 7px;
+
+      font-size: 14px;
+    }
+
+    .skill-bar {
+      height: 7px;
+
+      background: #0f172a;
+
+      border-radius: 10px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(0,255,255,0.08);
+    }
+
+    .skill-progress {
+      height: 100%;
+
+      background: linear-gradient(
+        90deg,
+        #00ffff,
+        #008cff
+      );
+
+      box-shadow:
+        0 0 10px #00ffff;
+
+      width: 0;
+
+      transition: width 1.5s ease;
+    }
+
+    /* =========================
+       PROJECTS
+    ========================= */
+
+    .projects {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
+      gap: 20px;
+    }
+
+    .project {
+      padding: 25px;
+
+      background: rgba(0,0,0,0.35);
+
+      border: 1px solid rgba(0,255,255,0.12);
+
+      border-radius: 12px;
+
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-8px);
+
+      border-color: #00ffff;
+
+      box-shadow:
+        0 0 25px rgba(0,255,255,0.12);
+    }
+
+    .project-icon {
+      font-size: 35px;
+
+      margin-bottom: 15px;
+    }
+
+    .project h3 {
+      color: #00ffff;
+
+      margin-bottom: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+
+      padding: 4px 8px;
+
+      margin: 5px 3px 0 0;
+
+      border: 1px solid rgba(0,255,255,0.2);
+
+      border-radius: 5px;
+
+      color: #67e8f9;
+
+      font-size: 11px;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-box {
+      text-align: center;
+    }
+
+    .contact-link {
+      display: block;
+
+      color: #67e8f9;
+
+      text-decoration: none;
+
+      margin: 12px 0;
+
+      transition: 0.3s;
+    }
+
+    .contact-link:hover {
+      color: white;
+
+      text-shadow:
+        0 0 10px #00ffff;
+    }
+
+    /* =========================
+       REVEAL
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(40px);
+
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+    /* =========================
+       GLITCH
+    ========================= */
+
+    .glitch:hover {
+      animation:
+        glitch 0.25s infinite;
+    }
+
+    @keyframes glitch {
+      0% {
+        transform: translate(0);
+      }
+
+      25% {
+        transform: translate(-2px,2px);
+      }
+
+      50% {
+        transform: translate(2px,-2px);
+      }
+
+      75% {
+        transform: translate(-2px,-1px);
+      }
+
+      100% {
+        transform: translate(0);
+      }
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      width: 100%;
+
+      text-align: center;
+
+      padding: 30px 20px;
+
+      border-top:
+        1px solid rgba(0,255,255,0.1);
+
+      color: #475569;
+
+      font-size: 13px;
+    }
+
+    .footer-code {
+      color: #00ffff;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="overlay"></div>
+<div class="scanlines"></div>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+  <div class="nav-inner">
+
+    <div class="logo">
+      MURAD@SECURITY:~$
+    </div>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+  </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+  <div class="terminal-status">
+    <span class="status-dot"></span>
+    SYSTEM ONLINE — SECURITY MODE ACTIVE
+  </div>
+
+  <h1 class="glitch">
+    Murad <span>Shikhaliyev</span>
+  </h1>
+
+  <div class="subtitle">
+    <span id="typing"></span>
+    <span class="cursor">█</span>
+  </div>
+
+  <div class="hero-buttons">
+
+    <a href="#projects" class="btn btn-primary">
+      View Projects
+    </a>
+
+    <a href="#contact" class="btn btn-secondary">
+      Contact Me
+    </a>
+
+  </div>
+
+
+  <!-- TERMINAL -->
+
+  <div class="terminal">
+
+    <div class="terminal-header">
+      ● ● ● &nbsp; murad@cybersecurity — terminal
+    </div>
+
+    <div class="terminal-body">
+
+      <div>
+        <span class="green">root@murad</span>:~$
+        whoami
+      </div>
+
+      <div class="cyan">
+        Cyber Security Specialist
+      </div>
+
+      <div>
+        <span class="green">root@murad</span>:~$
+        status
+      </div>
+
+      <div>
+        Security Operations:
+        <span class="green">ACTIVE</span>
+      </div>
+
+      <div>
+        Network:
+        <span class="green">PROTECTED</span>
+      </div>
+
+      <div>
+        Threat Detection:
+        <span class="green">ONLINE</span>
+      </div>
+
+      <div>
+        <span class="green">root@murad</span>:~$
+        _
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about" class="reveal">
+
+  <h2 class="section-title">
+    // ABOUT ME
+  </h2>
+
+  <div class="about-grid">
+
+    <div class="card">
+
+      <h3 class="text-2xl text-cyan-400 mb-4">
+        Cyber Security Specialist
+      </h3>
+
+      <p class="text-gray-300 leading-7">
+
+        System Administrator və Network Security Specialist
+        kimi sistemlərin, şəbəkələrin və təhlükəsizlik
+        infrastrukturlarının idarə olunması ilə məşğulam.
+
+        <br><br>
+
+        Əsas istiqamətlərim Network Security, Firewall
+        Administration, Vulnerability Analysis,
+        Ethical Hacking və Penetration Testing-dir.
+
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3 class="text-2xl text-cyan-400 mb-4">
+        Mission
+      </h3>
+
+      <p class="text-gray-300 leading-7">
+
+        Sistemlərdə təhlükəsizlik boşluqlarını müəyyən etmək,
+        mümkün hücum vektorlarını analiz etmək və
+        infrastrukturu daha təhlükəsiz vəziyyətə gətirmək.
+
+        <br><br>
+
+        <span class="cyan">
+          "Understand the attack. Build the defense."
+        </span>
+
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section id="skills" class="reveal">
+
+  <h2 class="section-title">
+    // SECURITY SKILLS
+  </h2>
+
+  <div class="card">
+
+    <div class="skill">
+
+      <div class="skill-header">
+        <span>Network Security</span>
+        <span class="cyan">90%</span>
+      </div>
+
+      <div class="skill-bar">
+        <div class="skill-progress" data-width="90%"></div>
+      </div>
+
+    </div>
+
+
+    <div class="skill">
+
+      <div class="skill-header">
+        <span>Firewall Administration</span>
+        <span class="cyan">88%</span>
+      </div>
+
+      <div class="skill-bar">
+        <div class="skill-progress" data-width="88%"></div>
+      </div>
+
+    </div>
+
+
+    <div class="skill">
+
+      <div class="skill-header">
+        <span>Linux / Windows Server</span>
+        <span class="cyan">90%</span>
+      </div>
+
+      <div class="skill-bar">
+        <div class="skill-progress" data-width="90%"></div>
+      </div>
+
+    </div>
+
+
+    <div class="skill">
+
+      <div class="skill-header">
+        <span>Ethical Hacking</span>
+        <span class="cyan">82%</span>
+      </div>
+
+      <div class="skill-bar">
+        <div class="skill-progress" data-width="82%"></div>
+      </div>
+
+    </div>
+
+
+    <div class="skill">
+
+      <div class="skill-header">
+        <span>Python / Bash</span>
+        <span class="cyan">75%</span>
+      </div>
+
+      <div class="skill-bar">
+        <div class="skill-progress" data-width="75%"></div>
+      </div>
+
+    </div>
+
+
+    <div class="skill">
+
+      <div class="skill-header">
+        <span>SIEM / Threat Analysis</span>
+        <span class="cyan">78%</span>
+      </div>
+
+      <div class="skill-bar">
+        <div class="skill-progress" data-width="78%"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section id="projects" class="reveal">
+
+  <h2 class="section-title">
+    // PROJECTS
+  </h2>
+
+  <div class="projects">
+
+
+    <div class="project">
+
+      <div class="project-icon">
+        🕵️‍♂️
+      </div>
+
+      <h3>
+        Vulnerability Scanner
+      </h3>
+
+      <p class="text-gray-400 text-sm leading-6">
+
+        Python əsaslı vulnerability scanning
+        və network assessment layihəsi.
+
+      </p>
+
+      <div>
+
+        <span class="tag">Python</span>
+        <span class="tag">Nmap</span>
+        <span class="tag">Security</span>
+
+      </div>
+
+    </div>
+
+
+    <div class="project">
+
+      <div class="project-icon">
+        🧱
+      </div>
+
+      <h3>
+        Firewall Automation
+      </h3>
+
+      <p class="text-gray-400 text-sm leading-6">
+
+        Firewall qaydalarının və təhlükəsizlik
+        proseslərinin avtomatlaşdırılması.
+
+      </p>
+
+      <div>
+
+        <span class="tag">FortiGate</span>
+        <span class="tag">Palo Alto</span>
+        <span class="tag">Python</span>
+
+      </div>
+
+    </div>
+
+
+    <div class="project">
+
+      <div class="project-icon">
+        🌐
+      </div>
+
+      <h3>
+        Secure Network
+      </h3>
+
+      <p class="text-gray-400 text-sm leading-6">
+
+        Təhlükəsiz network infrastrukturu,
+        segmentation və firewall architecture.
+
+      </p>
+
+      <div>
+
+        <span class="tag">Cisco</span>
+        <span class="tag">HP</span>
+        <span class="tag">Fortinet</span>
+
+      </div>
+
+    </div>
+
+
+    <div class="project">
+
+      <div class="project-icon">
+        📡
+      </div>
+
+      <h3>
+        Network Analysis
+      </h3>
+
+      <p class="text-gray-400 text-sm leading-6">
+
+        Packet analysis, network discovery
+        və təhlükəsizlik monitorinqi.
+
+      </p>
+
+      <div>
+
+        <span class="tag">Wireshark</span>
+        <span class="tag">Nmap</span>
+        <span class="tag">TCP/IP</span>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact" class="reveal">
+
+  <h2 class="section-title">
+    // CONTACT
+  </h2>
+
+  <div class="card contact-box">
+
+    <p class="text-gray-400 mb-6">
+      Təhlükəsizlik, network və IT layihələri üçün
+      mənimlə əlaqə saxlaya bilərsiniz.
+    </p>
+
+
+    <a
+      href="mailto:murad.shikhaliyev655@gmail.com"
+      class="contact-link">
+
+      📧
+      murad.shikhaliyev655@gmail.com
+
+    </a>
+
+
+    <a
+      href="https://github.com/murad482"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="contact-link">
+
+      💻
+      github.com/murad482
+
+    </a>
+
+
+    <a
+      href="tel:+994504440473"
+      class="contact-link">
+
+      📞
+      +994 50 444 04 73
+
+    </a>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <div>
+    <span class="footer-code">
+      root@murad:~$
+    </span>
+    connection secured.
+  </div>
+
+  <div class="mt-2">
+    © 2026 Murad Shikhaliyev | Cyber Security Specialist
+  </div>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/* =================================
+   MATRIX EFFECT
+================================= */
+
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+let fontSize = 16;
+let columns;
+let drops;
+
+const chars =
+  "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*@";
+
+function resizeMatrix() {
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  columns = Math.floor(canvas.width / fontSize);
+
+  drops = [];
+
+  for (let i = 0; i < columns; i++) {
+    drops[i] =
+      Math.random() * -canvas.height / fontSize;
+  }
+}
+
+resizeMatrix();
+
+function drawMatrix() {
+
+  ctx.fillStyle = "rgba(2,6,23,0.08)";
+
+  ctx.fillRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  ctx.fillStyle = "#00ffff";
+
+  ctx.font =
+    fontSize + "px monospace";
+
+  for (let i = 0; i < drops.length; i++) {
+
+    const text =
+      chars.charAt(
+        Math.floor(
+          Math.random() * chars.length
+        )
+      );
+
+    ctx.fillText(
+      text,
+      i * fontSize,
+      drops[i] * fontSize
+    );
+
+    if (
+      drops[i] * fontSize >
+      canvas.height &&
+      Math.random() > 0.975
+    ) {
+      drops[i] = 0;
+    }
+
+    drops[i] += 0.75;
+  }
+}
+
+setInterval(drawMatrix, 40);
+
+window.addEventListener(
+  "resize",
+  resizeMatrix
+);
+
+
+/* =================================
+   TYPING EFFECT
+================================= */
+
+const typingElement =
+  document.getElementById("typing");
+
+const text =
+  "Cyber Security | Ethical Hacker | Network Defender";
+
+let charIndex = 0;
+
+function typeText() {
+
+  if (charIndex < text.length) {
+
+    typingElement.textContent +=
+      text.charAt(charIndex);
+
+    charIndex++;
+
+    setTimeout(typeText, 55);
+
+  }
+
+}
+
+typeText();
+
+
+/* =================================
+   SCROLL REVEAL
+================================= */
+
+const observer =
+  new IntersectionObserver(
+    (entries) => {
+
+      entries.forEach(
+        (entry) => {
+
+          if (
+            entry.isIntersecting
+          ) {
+
+            entry.target
+              .classList
+              .add("active");
+
+          }
+
         }
-      });
-    }, {
-      threshold: 0.1 // Elementin 10%-i görünəndə işə düşsün
-    });
+      );
 
-    const hiddenElements = document.querySelectorAll('.reveal');
-    hiddenElements.forEach((el) => observer.observe(el));
+    },
+    {
+      threshold: 0.15
+    }
+  );
 
-  </script>
+
+document
+  .querySelectorAll(".reveal")
+  .forEach(
+    (element) => {
+
+      observer.observe(element);
+
+    }
+  );
+
+
+/* =================================
+   SKILL BAR ANIMATION
+================================= */
+
+const skillObserver =
+  new IntersectionObserver(
+    (entries) => {
+
+      entries.forEach(
+        (entry) => {
+
+          if (
+            entry.isIntersecting
+          ) {
+
+            const bars =
+              entry.target
+                .querySelectorAll(
+                  ".skill-progress"
+                );
+
+            bars.forEach(
+              (bar) => {
+
+                bar.style.width =
+                  bar.dataset.width;
+
+              }
+            );
+
+            skillObserver.unobserve(
+              entry.target
+            );
+
+          }
+
+        }
+      );
+
+    },
+    {
+      threshold: 0.3
+    }
+  );
+
+
+const skillSection =
+  document.getElementById("skills");
+
+skillObserver.observe(
+  skillSection
+);
+
+
+/* =================================
+   NAVBAR ACTIVE EFFECT
+================================= */
+
+const sections =
+  document.querySelectorAll(
+    "section"
+  );
+
+const navLinks =
+  document.querySelectorAll(
+    ".nav-links a"
+  );
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    let current = "";
+
+    sections.forEach(
+      (section) => {
+
+        const sectionTop =
+          section.offsetTop - 150;
+
+        if (
+          window.scrollY >= sectionTop
+        ) {
+
+          current =
+            section.getAttribute(
+              "id"
+            );
+
+        }
+
+      }
+    );
+
+    navLinks.forEach(
+      (link) => {
+
+        link.style.color = "";
+
+        if (
+          link.getAttribute("href") ===
+          "#" + current
+        ) {
+
+          link.style.color =
+            "#00ffff";
+
+        }
+
+      }
+    );
+
+  }
+);
+
+</script>
 
 </body>
 </html>
